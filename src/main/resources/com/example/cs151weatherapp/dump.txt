@@ -1,0 +1,3 @@
+ImageView iconImageView = new ImageView(new Image(new FileInputStream("src/main/resources/com/example/cs151weatherapp/clear-weather.png")));
+adviceImage = new ImageView(new Image(new FileInputStream("src/main/resources/com/example/cs151weatherapp/umbrella.jpeg")));
+throws IOException
