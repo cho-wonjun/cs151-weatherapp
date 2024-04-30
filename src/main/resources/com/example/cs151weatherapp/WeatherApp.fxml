@@ -1,58 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 
-<VBox maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs151weatherapp.MainController">
-    <children>
-        <AnchorPane VBox.vgrow="ALWAYS">
-            <children>
-                <VBox layoutX="352.0" layoutY="214.0" alignment="CENTER">
-                    <Label fx:id="helper">type in any city!</Label>
-                    <TextField fx:id="citySearch" promptText="search for any city in california.." onAction="#handleSearch"></TextField>
-
-                    <Label fx:id="mainWeatherLabel" alignment="CENTER">
-                        <font>
-                            <Font name="Georgia Bold" size="49.0" />
-                        </font>
-                    </Label>
-
-                    <Label fx:id="mainWeatherLocationLabel" alignment="CENTER">
-                        <font>
-                            <Font name="Georgia Bold" size="49.0" />
-                        </font>
-                    </Label>
-
-                    <Label fx:id="weatherDescriptionLabel"></Label>
-
-                    <HBox alignment="CENTER">
-                        <Label fx:id="currTempMax">placeholderMAX</Label>
-                        <Label fx:id="currTempMin">placeholderMIN</Label>
-                    </HBox>
-
-                    <HBox fx:id="forecastHbox" alignment="CENTER">
-                        <VBox style="-fx-border-color:black">
-                            <Label fx:id="slot0">1</Label>
-                        </VBox>
-                        <VBox style="-fx-border-color:black">
-                            <Label fx:id="slot1">2</Label>
-                        </VBox>
-                        <VBox style="-fx-border-color:black">
-                            <Label fx:id="slot2">3</Label>
-                        </VBox>
-                        <VBox style="-fx-border-color:black">
-                            <Label fx:id="slot3">4</Label>
-                        </VBox>
-                        <VBox style="-fx-border-color:black">
-                            <Label fx:id="slot4">5</Label>
-                        </VBox>
-                    </HBox>
-
-                </VBox>
-
-
-            </children>
-        </AnchorPane>
-    </children>
+<VBox maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs151weatherapp.MainController" spacing="20" alignment="TOP_CENTER" style="-fx-padding: 20; -fx-background-color: #f4f4f4;">
+    <ImageView fitHeight="90" preserveRatio="true">
+        <image>
+            <Image url="@images/weather_app_logo.png"/>
+        </image>
+    </ImageView>
+    <Label fx:id="helper" text="Type in any city!" style="-fx-font-size: 16px;"/>
+    <TextField fx:id="citySearch" promptText="Search for any city in California..." onAction="#handleSearch" maxWidth="300.0" />
+    <Label fx:id="mainWeatherLabel" text="Current Weather" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+    <Label fx:id="mainWeatherLocationLabel" style="-fx-font-size: 20px;"/>
+    <Label fx:id="weatherDescriptionLabel" style="-fx-font-size: 16px;" />
+    <HBox spacing="10" alignment="CENTER">
+        <Label fx:id="currTempMax" text="Max Temp: placeholderMAX" style="-fx-border-color: black; -fx-padding: 5;" />
+        <Label fx:id="currTempMin" text="Min Temp: placeholderMIN" style="-fx-border-color: black; -fx-padding: 5;" />
+    </HBox>
+    <HBox fx:id="forecastHbox" spacing="10" alignment="CENTER">
+        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+            <Label fx:id="slot0" text="1" />
+        </VBox>
+        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+            <Label fx:id="slot1" text="2" />
+        </VBox>
+        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+            <Label fx:id="slot2" text="3" />
+        </VBox>
+        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+            <Label fx:id="slot3" text="4" />
+        </VBox>
+        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+            <Label fx:id="slot4" text="5" />
+        </VBox>
+    </HBox>
 </VBox>

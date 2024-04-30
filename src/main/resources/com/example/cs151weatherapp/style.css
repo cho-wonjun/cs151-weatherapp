@@ -1,0 +1,17 @@
+.root {
+    -fx-font-family: 'Calibri';
+    -fx-base: #eeeeee;
+    -fx-background-image: url("images/weather_background_image.jpg");
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+}
+
+.header-label {
+    -fx-font-size: 24px;
+    -fx-text-fill: #333333;
+    -fx-padding: 10;
+}
+
+.ImageView {
+    -fx-padding: 20;
+}
