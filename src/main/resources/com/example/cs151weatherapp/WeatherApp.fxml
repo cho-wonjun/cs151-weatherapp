@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
 
-<VBox maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs151weatherapp.MainController" spacing="20" alignment="TOP_CENTER" style="-fx-padding: 20; -fx-background-color: #f4f4f4;">
+
+<VBox maxHeight="600.0" maxWidth="600.0" minHeight="600.0" minWidth="600.0" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cs151weatherapp.MainController" spacing="20" alignment="TOP_CENTER" style="-fx-padding: 20; -fx-background-color: #f4f4f4;" fx:id="mainvbox">
     <ImageView fitHeight="90" preserveRatio="true">
         <image>
             <Image url="@images/weather_app_logo.png"/>
@@ -16,23 +16,23 @@
     <Label fx:id="mainWeatherLocationLabel" style="-fx-font-size: 20px;"/>
     <Label fx:id="weatherDescriptionLabel" style="-fx-font-size: 16px;" />
     <HBox spacing="10" alignment="CENTER">
-        <Label fx:id="currTempMax" text="Max Temp: placeholderMAX" style="-fx-border-color: black; -fx-padding: 5;" />
-        <Label fx:id="currTempMin" text="Min Temp: placeholderMIN" style="-fx-border-color: black; -fx-padding: 5;" />
+        <Label fx:id="currTempMax" text="Max Temp: placeholderMAX" style="-fx-border-color: black; -fx-padding: 5; -fx-background-color: #ffffff"/>
+        <Label fx:id="currTempMin" text="Min Temp: placeholderMIN" style="-fx-border-color: black; -fx-padding: 5; -fx-background-color: #ffffff" />
     </HBox>
     <HBox fx:id="forecastHbox" spacing="10" alignment="CENTER">
-        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+        <VBox stylesheets="style.css" styleClass="ForecastContainer" fx:id="vbox0">
             <Label fx:id="slot0" text="1" />
         </VBox>
-        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+        <VBox stylesheets="style.css" styleClass="ForecastContainer" fx:id="vbox1">
             <Label fx:id="slot1" text="2" />
         </VBox>
-        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+        <VBox stylesheets="style.css" styleClass="ForecastContainer" fx:id="vbox2">
             <Label fx:id="slot2" text="3" />
         </VBox>
-        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+        <VBox stylesheets="style.css" styleClass="ForecastContainer" fx:id="vbox3">
             <Label fx:id="slot3" text="4" />
         </VBox>
-        <VBox style="-fx-border-color: black; -fx-padding: 10;">
+        <VBox stylesheets="style.css" styleClass="ForecastContainer" fx:id="vbox4">
             <Label fx:id="slot4" text="5" />
         </VBox>
     </HBox>

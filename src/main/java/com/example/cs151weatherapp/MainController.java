@@ -2,12 +2,13 @@ package com.example.cs151weatherapp;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -39,6 +40,13 @@ public class MainController {
     @FXML private Label slot2;
     @FXML private Label slot3;
     @FXML private Label slot4;
+    @FXML private HBox forecastHbox;
+    @FXML private VBox vbox0;
+    @FXML private VBox vbox1;
+    @FXML private VBox vbox2;
+    @FXML private VBox vbox3;
+    @FXML private VBox vbox4;
+    @FXML private VBox mainvbox;
 
     private String key = "856a1b5bb6769a9c2402634734e13087";
 
@@ -62,10 +70,10 @@ public class MainController {
             Map<String, Object> map = new ObjectMapper().readValue(weatherDescriptionList.getJSONObject(0).toString(), HashMap.class);
 
             weatherDescriptionLabel.setText(map.get("main") + ", " + map.get("description"));
-            mainWeatherLabel.setText("CURRENT: " + weatherJSON.getJSONObject("main").get("feels_like").toString() + "°F ");
+            mainWeatherLabel.setText(weatherJSON.getJSONObject("main").get("feels_like").toString() + "°F ");
             currTempMax.setText("MAX temp: " + weatherJSON.getJSONObject("main").get("temp_max").toString() + "°F ");
             currTempMin.setText("MIN temp: " + weatherJSON.getJSONObject("main").get("temp_min").toString() + "°F ");
-            mainWeatherLocationLabel.setText("Location: " + weatherJSON.get("name").toString() );
+            mainWeatherLocationLabel.setText(weatherJSON.get("name").toString() );
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -105,19 +113,74 @@ public class MainController {
     }
     @FXML
     private void handleSearch(){
-        mainWeatherLabel.setText("WORKING");
+        mainWeatherLabel.setText("Enter valid city or more search parameters.");
         String inputCity = citySearch.getText();
         CitySelector city = new CitySelector(inputCity);
         try{
             city.checkCity();
             String lat = city.getLat();
             String longi = city.getLongi();
+            setLabels();
             updatePage(lat, longi);
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());
+            wipeLabels();
         }
 
+    }
+
+    public void wipeLabels(){
+        mainWeatherLocationLabel.setText("");
+        weatherDescriptionLabel.setText("");
+        slot0.setText("");
+        slot1.setText("");
+        slot2.setText("");
+        slot3.setText("");
+        slot4.setText("");
+        currTempMax.setText("");
+        currTempMin.setText("");
+        forecastHbox.setBackground(Background.EMPTY);
+        vbox0.setBorder(Border.EMPTY);
+        vbox1.setBorder(Border.EMPTY);
+        vbox2.setBorder(Border.EMPTY);
+        vbox3.setBorder(Border.EMPTY);
+        vbox4.setBorder(Border.EMPTY);
+        currTempMin.setBorder(Border.EMPTY);
+        currTempMax.setBorder(Border.EMPTY);
+        currTempMin.setBackground(Background.EMPTY);
+        currTempMax.setBackground(Background.EMPTY);
+        vbox0.setBackground(Background.EMPTY);
+        vbox1.setBackground(Background.EMPTY);
+        vbox2.setBackground(Background.EMPTY);
+        vbox3.setBackground(Background.EMPTY);
+        vbox4.setBackground(Background.EMPTY);
+    }
+
+    public void setLabels(){
+        forecastHbox.setBackground(Background.EMPTY);
+        vbox0.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        vbox1.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        vbox2.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        vbox3.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        vbox4.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        currTempMin.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        currTempMax.setBorder(new Border(new BorderStroke(Color.BLACK,
+                BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+        currTempMin.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        currTempMax.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        vbox0.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        vbox1.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        vbox2.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        vbox3.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
+        vbox4.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     private String timeConvert(String orig){

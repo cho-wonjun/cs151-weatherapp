@@ -1,5 +1,7 @@
 package com.example.cs151weatherapp;
 
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -19,7 +21,7 @@ public class CitySelector {
     public CitySelector(String city){
         this.city = city;
     }
-    public void checkCity(){
+    public void checkCity() throws Exception {
         try{
             URL url = new URL("https://geocode.maps.co/search?q=" + city + "&api_key=" + geokey);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -41,6 +43,7 @@ public class CitySelector {
         }
         catch(Exception e){
             System.out.println("City Selector Error");
+            throw new Exception();
         }
     }
 
