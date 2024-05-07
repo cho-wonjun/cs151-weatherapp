@@ -47,6 +47,7 @@ public class MainController {
     @FXML private VBox vbox3;
     @FXML private VBox vbox4;
     @FXML private VBox mainvbox;
+    private CitySelector selector;
 
     private String key = "856a1b5bb6769a9c2402634734e13087";
 
@@ -147,11 +148,11 @@ public class MainController {
     private void handleSearch(){
         mainWeatherLabel.setText("Enter valid city or more search parameters.");
         String inputCity = citySearch.getText();
-        CitySelector city = new CitySelector(inputCity);
+        selector.setCity(inputCity);
         try{
-            city.checkCity();
-            String lat = city.getLat();
-            String longi = city.getLongi();
+            selector.checkCity();
+            String lat = selector.getLat();
+            String longi = selector.getLongi();
             setLabels();
             updatePage(lat, longi);
 
@@ -232,5 +233,6 @@ public class MainController {
     @FXML
     public void initialize(){
         updatePage("37.335480","-121.893028");
+        selector = new CitySelector("san jose");
     }
     }

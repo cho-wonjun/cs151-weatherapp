@@ -54,4 +54,9 @@ public class CitySelector {
     public String getLongi() {
         return longi;
     }
+
+    public void setCity(String city){
+        this.city = city;
+    }
+
 }
