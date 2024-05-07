@@ -1,11 +1,35 @@
 .root {
     -fx-font-family: 'Calibri';
     -fx-base: #eeeeee;
-    -fx-background-image: url("images/weather_background_image.jpg");
+    -fx-background-image: url("images/sunny_image.jpg");
     -fx-background-size: cover;
     -fx-background-position: center center;
 }
 
+.sunny {
+    -fx-background-image: url('images/sunny_image.jpg');
+    -fx-background-size: cover;
+}
+
+.cloudy {
+    -fx-background-image: url('images/cloudy_image.jpg');
+    -fx-background-size: cover;
+}
+
+.rainy {
+    -fx-background-image: url('images/raining_image.jpg');
+    -fx-background-size: cover;
+}
+
+.snowy {
+    -fx-background-image: url('images/snowy_image.jpg');
+    -fx-background-size: cover;
+}
+
+.storm {
+    -fx-background-image: url('images/storm_image.jpg');
+    -fx-background-size: cover;
+}
 .header-label {
     -fx-font-size: 24px;
     -fx-text-fill: #333333;

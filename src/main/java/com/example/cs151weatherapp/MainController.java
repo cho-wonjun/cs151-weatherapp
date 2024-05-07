@@ -50,6 +50,33 @@ public class MainController {
 
     private String key = "856a1b5bb6769a9c2402634734e13087";
 
+
+    private void changeBackground(String weatherCondition) {
+        mainvbox.getStyleClass().clear();
+        mainvbox.getStyleClass().add("root"); // Apply default first
+        switch (weatherCondition.toLowerCase()) {
+            case "clear":
+            case "sunny":
+                mainvbox.getStyleClass().add("sunny");
+                break;
+            case "clouds":
+                mainvbox.getStyleClass().add("cloudy");
+                break;
+            case "rain":
+                mainvbox.getStyleClass().add("rainy");
+                break;
+            case "snow":
+                mainvbox.getStyleClass().add("snowy");
+                break;
+            case "thunderstorm":
+                mainvbox.getStyleClass().add("storm");
+                break;
+            default:
+                // No additional class for unknown conditions; only default is applied
+                break;
+        }
+    }
+
     private void updatePage(String lat, String longi){
         try{
             URL url = new URL("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + longi + "&appid="  + key + "&units=imperial");
@@ -74,6 +101,11 @@ public class MainController {
             currTempMax.setText("MAX temp: " + weatherJSON.getJSONObject("main").get("temp_max").toString() + "°F ");
             currTempMin.setText("MIN temp: " + weatherJSON.getJSONObject("main").get("temp_min").toString() + "°F ");
             mainWeatherLocationLabel.setText(weatherJSON.get("name").toString() );
+
+            // Parsing the main weather condition
+            String mainWeatherCondition = map.get("main").toString();
+            changeBackground(mainWeatherCondition); // Call to change the background based on the weather
+
         }
         catch (Exception e){
             System.out.println(e.getMessage());

@@ -9,8 +9,7 @@ import java.io.IOException;
 
 public class MainPage extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainPage.class.getResource("WeatherApp.fxml"));
+    public void start(Stage stage) throws IOException {        FXMLLoader fxmlLoader = new FXMLLoader(MainPage.class.getResource("WeatherApp.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Weather App");
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
