@@ -78,6 +78,31 @@ public class MainController {
         }
     }
 
+    private void changeiconBackground(String weatherCondition, VBox targetbox) {
+        targetbox.getStyleClass().clear();
+        targetbox.getStyleClass().add("clear2"); // Apply default first
+        switch (weatherCondition.toLowerCase()) {
+            case "sunny":
+                targetbox.getStyleClass().add("sunny2");
+                break;
+            case "clouds":
+                targetbox.getStyleClass().add("cloudy2");
+                break;
+            case "rain":
+                targetbox.getStyleClass().add("rainy2");
+                break;
+            case "snow":
+                targetbox.getStyleClass().add("snowy2");
+                break;
+            case "thunderstorm":
+                targetbox.getStyleClass().add("storm2");
+                break;
+            default:
+                // No additional class for unknown conditions; only default is applied
+                break;
+        }
+    }
+
     private void updatePage(String lat, String longi){
         try{
             URL url = new URL("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + longi + "&appid="  + key + "&units=imperial");
@@ -131,12 +156,16 @@ public class MainController {
             for(int x = 0; x < 5; x++){
                 days.add(forecastList.getJSONObject(x));
             }
-            slot0.setText(timeConvert(days.get(0).get("dt_txt").toString()) + "\n      " + days.get(0).getJSONObject("main").get("feels_like").toString() + "°F ");
-            slot1.setText(timeConvert(days.get(1).get("dt_txt").toString()) + "\n      " + days.get(1).getJSONObject("main").get("feels_like").toString() + "°F ");
-            slot2.setText(timeConvert(days.get(2).get("dt_txt").toString()) + "\n      " + days.get(2).getJSONObject("main").get("feels_like").toString() + "°F ");
-            slot3.setText(timeConvert(days.get(3).get("dt_txt").toString()) + "\n      " + days.get(3).getJSONObject("main").get("feels_like").toString() + "°F ");
-            slot4.setText(timeConvert(days.get(4).get("dt_txt").toString()) + "\n      " + days.get(4).getJSONObject("main").get("feels_like").toString() + "°F ");
-
+            slot0.setText(timeConvert(days.get(0).get("dt_txt").toString()) + "\n      " + days.get(0).getJSONObject("main").get("feels_like").toString() + "°F \n       " + days.get(0).getJSONArray("weather").getJSONObject(0).get("main"));
+            changeiconBackground(days.get(0).getJSONArray("weather").getJSONObject(0).get("main").toString(), vbox0);
+            slot1.setText(timeConvert(days.get(1).get("dt_txt").toString()) + "\n      " + days.get(1).getJSONObject("main").get("feels_like").toString() + "°F \n       " + days.get(1).getJSONArray("weather").getJSONObject(0).get("main"));
+            changeiconBackground(days.get(1).getJSONArray("weather").getJSONObject(0).get("main").toString(), vbox1);
+            slot2.setText(timeConvert(days.get(2).get("dt_txt").toString()) + "\n      " + days.get(2).getJSONObject("main").get("feels_like").toString() + "°F \n       " + days.get(2).getJSONArray("weather").getJSONObject(0).get("main"));
+            changeiconBackground(days.get(2).getJSONArray("weather").getJSONObject(0).get("main").toString(), vbox2);
+            slot3.setText(timeConvert(days.get(3).get("dt_txt").toString()) + "\n      " + days.get(3).getJSONObject("main").get("feels_like").toString() + "°F \n       " + days.get(3).getJSONArray("weather").getJSONObject(0).get("main"));
+            changeiconBackground(days.get(3).getJSONArray("weather").getJSONObject(0).get("main").toString(), vbox3);
+            slot4.setText(timeConvert(days.get(4).get("dt_txt").toString()) + "\n      " + days.get(4).getJSONObject("main").get("feels_like").toString() + "°F \n       " + days.get(4).getJSONArray("weather").getJSONObject(0).get("main"));
+            changeiconBackground(days.get(4).getJSONArray("weather").getJSONObject(0).get("main").toString(), vbox4);
 
 
         }

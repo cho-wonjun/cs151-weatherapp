@@ -29,6 +29,38 @@
     -fx-background-image: url('images/storm.gif');
     -fx-background-size: cover;
 }
+
+.clear2 {
+    -fx-background-image: url('images/clearicon.jpg');
+    -fx-background-size: cover;
+}
+.sunny2 {
+    -fx-background-image: url('images/sunnyicon.jpg');
+    -fx-background-size: cover;
+}
+
+.cloudy2 {
+    -fx-background-image: url('images/cloudyicon.jpg');
+    -fx-background-size: cover;
+}
+
+.rainy2 {
+    -fx-background-image: url('images/rainyicon.jpg');
+    -fx-background-size: cover;
+}
+
+.snowy2 {
+    -fx-background-image: url('images/snowyicon.jpg');
+    -fx-background-size: cover;
+}
+
+.storm2 {
+    -fx-background-image: url('images/stormyicon.jpg');
+    -fx-background-size: cover;
+}
+
+
+
 .header-label {
     -fx-font-size: 24px;
     -fx-text-fill: #333333;
